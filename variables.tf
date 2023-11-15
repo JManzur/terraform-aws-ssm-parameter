@@ -25,7 +25,7 @@ variable "ssm_parameter" {
       for parameter in var.ssm_parameter :
       can(regex("^/", parameter.name))
     ])
-    error_message = "The name must start with a slash and use the recommended format: /<environment>/<service>/<parameter_name>."
+    error_message = "The name must start with a slash and use the recommended format: /<environment>/<service>/<parameter_group>/<parameter_name> ."
   }
 
   validation {
@@ -48,15 +48,15 @@ variable "ssm_parameter" {
 }
 
 variable "create_kms_key" {
-  description = "[OPTIONAL] If true, a KMS key will be created and used to encrypt the CloudWatch log group."
+  description = "[OPTIONAL] If true, a KMS key will be created and used to encrypt the SecureString parameters."
   type        = bool
   default     = false
 }
 
-variable "kms_key" {
-  description = "[OPTIONAL] The ARN of the KMS key to use to encrypt the CloudWatch log group."
+variable "existing_kms_key_arn" {
+  description = "[OPTIONAL] The ARN of the KMS key to use to encrypt the SecureString parameters."
   type        = string
-  default     = ""
+  default     = "" # Empty string is allowed if create_kms_key is set to true.
 }
 
 variable "kms_key_extra_role_arns" {

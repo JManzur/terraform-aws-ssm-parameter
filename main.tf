@@ -69,7 +69,7 @@ resource "aws_kms_alias" "ssm_parameter" {
 
 locals {
   key_id = {
-    for parameter in var.ssm_parameter : parameter.name => parameter.type == "SecureString" && var.create_kms_key ? aws_kms_key.ssm_parameter[parameter.name].arn : var.kms_key
+    for parameter in var.ssm_parameter : parameter.name => parameter.type == "SecureString" && var.create_kms_key ? aws_kms_key.ssm_parameter[parameter.name].arn : var.existing_kms_key_arn
   }
 }
 
