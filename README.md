@@ -44,7 +44,7 @@ module "ssm_parameters" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.25.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.60.0 |
 
 ## Modules
 
@@ -66,7 +66,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_kms_key"></a> [create\_kms\_key](#input\_create\_kms\_key) | [OPTIONAL] If true, a KMS key will be created and used to encrypt the SecureString parameters. | `bool` | `false` | no |
 | <a name="input_existing_kms_key_arn"></a> [existing\_kms\_key\_arn](#input\_existing\_kms\_key\_arn) | [OPTIONAL] The ARN of the KMS key to use to encrypt the SecureString parameters. | `string` | `""` | no |
-| <a name="input_kms_key_extra_role_arns"></a> [kms\_key\_extra\_role\_arns](#input\_kms\_key\_extra\_role\_arns) | [OPTIONAL] The ARNs of the IAM roles that should be able to use the KMS key. | `list(string)` | n/a | yes |
+| <a name="input_kms_key_extra_role_arns"></a> [kms\_key\_extra\_role\_arns](#input\_kms\_key\_extra\_role\_arns) | [OPTIONAL] The ARNs of the IAM roles that should be able to use the KMS key. | `list(string)` | `[]` | no |
 | <a name="input_ssm_parameter"></a> [ssm\_parameter](#input\_ssm\_parameter) | [Required] A list of maps of SSM parameters to create. The map must contain the following keys:<br>    - name: The name of the parameter.<br>      - Recommended format: /<environment>/<service>/<parameter\_name><br>    - description: The description of the parameter.<br>    - type: The type of the parameter. Valid values are String, StringList, or SecureString.<br>      - Refer to https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_Parameter.html for more information.<br>    - value: The value of the parameter.<br>    - tier: The tier of the parameter. Valid values are Standard, Advanced, or IntelligentTiering.<br>      - Refer to https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html for more information.<br>    - additional\_tags: A map of additional tags to apply to the parameter. | <pre>list(object({<br>    name            = string<br>    description     = string<br>    type            = string<br>    value           = string<br>    tier            = optional(string)<br>    additional_tags = optional(map(string))<br>  }))</pre> | n/a | yes |
 
 ## Outputs
