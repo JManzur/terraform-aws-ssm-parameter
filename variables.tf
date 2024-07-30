@@ -62,4 +62,5 @@ variable "existing_kms_key_arn" {
 variable "kms_key_extra_role_arns" {
   description = "[OPTIONAL] The ARNs of the IAM roles that should be able to use the KMS key."
   type        = list(string)
+  default     = []
 }
